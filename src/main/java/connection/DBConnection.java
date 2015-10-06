@@ -1,4 +1,10 @@
+package connection;
+
+import data.Constants;
+
 import java.sql.*;
+
+import static data.Constants.*;
 
 /**
  * Created by antonina_mykhailenko on 06.10.2015.
@@ -15,7 +21,7 @@ public class DBConnection {
         try {
             stmt = conn.createStatement();
 
-            rs = stmt.executeQuery(Constants.SQL_QUERY);
+            rs = stmt.executeQuery(SQL_QUERY);
 
             // Extract data from result set
             while (rs.next()) {
@@ -46,9 +52,9 @@ public class DBConnection {
 
     public void setH2Connection() {
         try {
-            Class.forName(Constants.JDBC_DRIVER);
+            Class.forName(JDBC_DRIVER);
             System.out.println("Connecting to database...");
-            conn = DriverManager.getConnection(Constants.DB_URL, Constants.USER, Constants.PASS);
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
         } catch (SQLException | ClassNotFoundException ex) {
             System.out.println("Connection already exists or JDBC Driver class was not found. ");
         }
