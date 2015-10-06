@@ -18,6 +18,8 @@ public class Station {
         this.long_w = long_w;
     }
 
+    public Station(){};
+
     public String getCity() {
         return city;
     }
@@ -58,15 +60,15 @@ public class Station {
         this.state = state;
     }
 
+
     @Override
     public String toString() {
         return "Station{" +
-                "city='" + city + '\'' +
-                ", id=" + id +
+                "id='" + id + '\'' +
+                ", city=" + city +
                 ", state='" + state + '\'' +
                 ", lat_n=" + lat_n +
                 ", long_w=" + long_w +
                 '}';
     }
-
 }

@@ -13,5 +13,5 @@ public class Constants {
     public static final String PASS = "";
 
     // Queries
-    public static final String SQL_QUERY = "SELECT id, city, state, lat_n, long_w FROM STATION";
+    public static final String SQL_QUERY = "SELECT * FROM STATION";
 }
