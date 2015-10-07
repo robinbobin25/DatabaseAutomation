@@ -15,7 +15,7 @@ import static data.Constants.SQL_QUERY;
 /**
  * Created by antonina_mykhailenko on 06.10.2015.
  */
-public class DAOMethods implements DAOInterface {
+public class MethodsWithSimpleConnection implements MethodsInterface {
 
     Statement stmt;
     ResultSet rs;

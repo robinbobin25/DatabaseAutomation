@@ -9,17 +9,14 @@ import java.sql.*;
 
 import static data.Constants.*;
 
-
 /**
  * Created by antonina_mykhailenko on 06.10.2015.
  */
+
 public class DBConnectionPool {
     private BasicDataSource connectionPool;
 
-    public DBConnectionPool()throws URISyntaxException, SQLException {
-
-
-
+    public DBConnectionPool()throws SQLException {
         connectionPool = new BasicDataSource();
 
         connectionPool.setUsername(USER);
@@ -28,29 +25,33 @@ public class DBConnectionPool {
         connectionPool.setDriverClassName(JDBC_DRIVER);
         connectionPool.setUrl(DB_URL);
         connectionPool.setInitialSize(3);
+        connectionPool.setMaxIdle(10);
 //        connectionPool.close();
     }
 
-    public void fromThePool() throws SQLException {
-        Connection connection = connectionPool.getConnection();
 
-        Statement stmt = connection.createStatement();
-        stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-        while (rs.next()) {
-            System.out.println("Read from DB: " + rs.getTimestamp("tick") + "\n");
-        }
-    }
 
-    public static void main(String[] args) {
-        try {
-            DBConnectionPool db = new DBConnectionPool();
-            db.fromThePool();
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+//    public void fromThePool() throws SQLException {
+//        Connection connection = connectionPool.getConnection();
+//
+//        for (int i = 0; i < 1000; i++) {
+//            Statement stmt = connection.createStatement();
+//            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+//            stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
+//            ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
+//
+//            while (rs.next()) {
+//                System.out.println("Read from DB: " + rs.getTimestamp("tick") + "\n");
+//            }
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        try {
+//            DBConnectionPool db = new DBConnectionPool();
+//            db.fromThePool();
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

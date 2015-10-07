@@ -4,11 +4,11 @@ package entities;
  * Created by antonina_mykhailenko on 06.10.2015.
  */
 public class Station {
-    int id;
-    String city;
-    String state;
-    double lat_n;
-    double long_w;
+    private int id;
+    private String city;
+    private String state;
+    private double lat_n;
+    private double long_w;
 
     public Station(int id, String city, String state, double lat_n, double long_w) {
         this.id = id;
