@@ -7,8 +7,8 @@ import dao.MethodsWithSimpleConnection;
  */
 public class Demo {
         public static void main(String[] args) throws Exception {
-//            MethodsWithSimpleConnection db = new MethodsWithSimpleConnection();
-//            db.findAllAndReturnList();
+            MethodsWithSimpleConnection db = new MethodsWithSimpleConnection();
+            db.findAllAndReturnList();
 
             DBConnectionPool db2 = new DBConnectionPool();
             db2.fromThePool();
