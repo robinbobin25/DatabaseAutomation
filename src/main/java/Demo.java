@@ -6,10 +6,10 @@ import dao.MethodsWithSimpleConnection;
  */
 public class Demo {
         public static void main(String[] args) throws Exception {
-//            MethodsWithSimpleConnection db = new MethodsWithSimpleConnection();
-//            db.findAllAndReturnList();
+            MethodsWithSimpleConnection db = new MethodsWithSimpleConnection();
+            db.findAllAndReturnList();
 
-            MethodsWithPoolConnection db2 = new MethodsWithPoolConnection();
-            db2.fromThePool();
+//            MethodsWithPoolConnection db2 = new MethodsWithPoolConnection();
+//            db2.fromThePool();
     }
 }

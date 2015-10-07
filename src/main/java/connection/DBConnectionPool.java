@@ -16,7 +16,20 @@ import static data.Constants.*;
 public class DBConnectionPool {
     private BasicDataSource connectionPool;
 
-    public DBConnectionPool()throws SQLException {
+//    public DBConnectionPool()throws SQLException {
+//        connectionPool = new BasicDataSource();
+//
+//        connectionPool.setUsername(USER);
+//        connectionPool.setPassword(PASS);
+//
+//        connectionPool.setDriverClassName(JDBC_DRIVER);
+//        connectionPool.setUrl(DB_URL);
+//        connectionPool.setInitialSize(3);
+//        connectionPool.setMaxIdle(10);
+////        connectionPool.close();
+//    }
+
+    public BasicDataSource setPoolH2Connection() {
         connectionPool = new BasicDataSource();
 
         connectionPool.setUsername(USER);
@@ -26,7 +39,7 @@ public class DBConnectionPool {
         connectionPool.setUrl(DB_URL);
         connectionPool.setInitialSize(3);
         connectionPool.setMaxIdle(10);
-//        connectionPool.close();
+        return connectionPool;
     }
 
 

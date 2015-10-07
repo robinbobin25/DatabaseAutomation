@@ -15,7 +15,7 @@ import static data.Constants.SQL_QUERY;
 /**
  * Created by antonina_mykhailenko on 06.10.2015.
  */
-public class MethodsWithSimpleConnection implements MethodsInterface {
+public class MethodsWithSimpleConnection {
 
     Statement stmt;
     ResultSet rs;
@@ -25,7 +25,6 @@ public class MethodsWithSimpleConnection implements MethodsInterface {
     List stationList = new ArrayList<Station>();
     Station station;
 
-    @Override
     public Station findAllAndReturnEntity() {
         System.out.println("Creating statement...");
         try {
@@ -49,7 +48,6 @@ public class MethodsWithSimpleConnection implements MethodsInterface {
         return station;
     }
 
-    @Override
     public ArrayList<Station> findAllAndReturnList() {
         conn = dbConnection.setH2Connection();
         try {
