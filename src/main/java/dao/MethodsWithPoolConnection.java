@@ -17,15 +17,12 @@ import java.util.ArrayList;
 public class MethodsWithPoolConnection {
 
     BasicDataSource connectionPool;
-    DBConnectionPool dbConnectionPool;
     Connection connection;
 
     public void fromThePool() throws SQLException {
-        dbConnectionPool = new DBConnectionPool();
+        connection = connectionPool.getConnection();
 
-        for (int i = 0; i < 1000; i++) {
-            connectionPool = dbConnectionPool.setPoolH2Connection();
-            connection = connectionPool.getConnection();
+        for (int i = 0; i < 10; i++) {
             Statement stmt = connection.createStatement();
             stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
             stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
@@ -36,5 +33,4 @@ public class MethodsWithPoolConnection {
             }
         }
     }
-
 }
