@@ -1,3 +1,4 @@
+import connection.DBConnectionPool;
 import dao.MethodsWithPoolConnection;
 import dao.MethodsWithSimpleConnection;
 
@@ -9,7 +10,7 @@ public class Demo {
 //            MethodsWithSimpleConnection db = new MethodsWithSimpleConnection();
 //            db.findAllAndReturnList();
 
-            MethodsWithPoolConnection db2 = new MethodsWithPoolConnection();
+            DBConnectionPool db2 = new DBConnectionPool();
             db2.fromThePool();
     }
 }

@@ -26,6 +26,21 @@ public class DBConnectionPool {
         connectionPool.setUrl(DB_URL);
         connectionPool.setInitialSize(3);
         connectionPool.setMaxIdle(10);
+//        connectionPool.close();
     }
 
+    public void fromThePool() throws SQLException {
+        Connection connection = connectionPool.getConnection();
+
+        for (int i = 0; i < 100; i++) {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+            stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
+            ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
+
+            while (rs.next()) {
+                System.out.println("Read from DB: " + rs.getTimestamp("tick") + "\n");
+            }
+        }
+    }
 }

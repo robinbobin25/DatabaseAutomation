@@ -19,18 +19,5 @@ public class MethodsWithPoolConnection {
     BasicDataSource connectionPool;
     Connection connection;
 
-    public void fromThePool() throws SQLException {
-        connection = connectionPool.getConnection();
 
-        for (int i = 0; i < 10; i++) {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-            stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-            ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-
-            while (rs.next()) {
-                System.out.println("Read from DB: " + rs.getTimestamp("tick") + "\n");
-            }
-        }
-    }
 }
