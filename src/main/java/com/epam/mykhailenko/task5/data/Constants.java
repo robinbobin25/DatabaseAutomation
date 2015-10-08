@@ -1,4 +1,4 @@
-package data;
+package com.epam.mykhailenko.task5.data;
 
 /**
  * Created by antonina_mykhailenko on 06.10.2015.

@@ -1,4 +1,4 @@
-package entities;
+package com.epam.mykhailenko.task5.entities;
 
 /**
  * Created by antonina_mykhailenko on 06.10.2015.
@@ -18,7 +18,10 @@ public class Station {
         this.long_w = long_w;
     }
 
-    public Station(){};
+    public Station() {
+    }
+
+    ;
 
     public String getCity() {
         return city;

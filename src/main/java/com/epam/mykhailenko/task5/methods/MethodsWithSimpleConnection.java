@@ -1,7 +1,7 @@
-package dao;
+package com.epam.mykhailenko.task5.methods;
 
-import connection.DBConnection;
-import entities.Station;
+import com.epam.mykhailenko.task5.connection.DBConnection;
+import com.epam.mykhailenko.task5.entities.Station;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static data.Constants.SQL_QUERY;
+import static com.epam.mykhailenko.task5.data.Constants.SQL_QUERY;
 
 /**
  * Created by antonina_mykhailenko on 06.10.2015.
@@ -30,7 +30,7 @@ public class MethodsWithSimpleConnection {
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(SQL_QUERY);
-            // Extract data from result set
+            // Extract com.epam.mykhailenko.task5.data from result set
             while (rs.next()) {
                 //Retrieve by column name
                 station = new Station();
@@ -49,7 +49,7 @@ public class MethodsWithSimpleConnection {
     }
 
     public ArrayList<Station> findAllAndReturnList() {
-        conn = dbConnection.setH2Connection();
+        conn = dbConnection.createH2Connection();
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(SQL_QUERY);

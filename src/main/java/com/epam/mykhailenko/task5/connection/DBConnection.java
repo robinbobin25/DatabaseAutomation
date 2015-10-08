@@ -1,18 +1,19 @@
-package connection;
+package com.epam.mykhailenko.task5.connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import static data.Constants.*;
+import static com.epam.mykhailenko.task5.data.Constants.*;
 
 /**
  * Created by antonina_mykhailenko on 06.10.2015.
  */
 public class DBConnection {
+    private Connection conn;
 
-    public Connection setH2Connection() {
-        Connection conn = null;
+    public Connection createH2Connection() {
+
         try {
             Class.forName(JDBC_DRIVER);
             System.out.println("Connecting to database...");
