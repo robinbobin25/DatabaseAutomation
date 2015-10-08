@@ -49,6 +49,8 @@ public class MethodsWithSimpleConnection {
     }
 
     public ArrayList<Station> findAllAndReturnList() {
+        long startTime = System.currentTimeMillis();
+
         conn = dbConnection.createH2Connection();
         try {
             stmt = conn.createStatement();
@@ -60,9 +62,16 @@ public class MethodsWithSimpleConnection {
             rs.close();
             stmt.close();
             conn.close();
+
+            long stopTime = System.currentTimeMillis();
+            long elapsedTime = stopTime - startTime;
+            System.out.println("Time with simple connection: " + elapsedTime);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return (ArrayList<Station>) stationList;
+
     }
 }

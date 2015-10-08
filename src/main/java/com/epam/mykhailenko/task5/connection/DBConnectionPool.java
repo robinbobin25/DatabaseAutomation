@@ -21,8 +21,8 @@ public class DBConnectionPool {
         connectionPool.setUrl(DB_URL);
 
         // set pool size:
-        connectionPool.setInitialSize(3);
-        connectionPool.setMaxTotal(10);
+        connectionPool.setInitialSize(1);
+        connectionPool.setMaxTotal(5);
 
         return connectionPool;
     }
