@@ -21,8 +21,6 @@ public class Station {
     public Station() {
     }
 
-    ;
-
     public String getCity() {
         return city;
     }

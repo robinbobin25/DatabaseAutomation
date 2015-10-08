@@ -22,25 +22,7 @@ import static com.epam.mykhailenko.task5.data.Constants.SQL_QUERY;
 
 public class MethodsWithPoolConnection {
 
-    Connection connection;
     DBConnectionPool db;
-
-    public void fromThePool() throws SQLException {
-        db = new DBConnectionPool();
-        connection = db.createH2PoolConnection().getConnection();
-
-        for (int i = 0; i < 10; i++) {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-            stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-            ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-
-            while (rs.next()) {
-                System.out.println(i + ") Read from DB: " + rs.getTimestamp("tick") + "\n");
-            }
-        }
-    }
-
     Statement stmt;
     ResultSet rs;
     Connection conn;

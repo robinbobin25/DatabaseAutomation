@@ -29,7 +29,5 @@ public class Demo {
         db3.createTable();
         db3.addDataToTable();
         db3.findAllAndReturnList();
-
-
     }
 }
