@@ -83,7 +83,7 @@ public class MethodsWithPoolConnection {
             }
             rs.close();
             stmt.close();
-            conn.close();
+            conn.close(); // return connection back to the pool
 
             long stopTime = System.currentTimeMillis();
             long elapsedTime = stopTime - startTime;

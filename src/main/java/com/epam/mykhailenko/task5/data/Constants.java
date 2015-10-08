@@ -14,4 +14,8 @@ public class Constants {
 
     // Queries
     public static final String SQL_QUERY = "SELECT * FROM STATION";
+
+    // Constants for Part4: Embedded DB
+    public static final String EMBEDDED_DB_URL = "jdbc:h2:~/dbcp_lab";
+
 }
