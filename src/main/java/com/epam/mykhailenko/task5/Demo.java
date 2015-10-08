@@ -9,15 +9,27 @@ import com.epam.mykhailenko.task5.methods.MethodsWithSimpleConnection;
  */
 public class Demo {
     public static void main(String[] args) {
-//        MethodsWithSimpleConnection db = new MethodsWithSimpleConnection();
-//        db.findAllAndReturnList();
-//
-//        MethodsWithPoolConnection db2 = new MethodsWithPoolConnection();
-//        db2.findAllAndReturnList();
+        // part 2
+        MethodsWithSimpleConnection db = new MethodsWithSimpleConnection();
+        db.findAllAndReturnList();
 
+        // part 3
+        MethodsWithPoolConnection db2 = new MethodsWithPoolConnection();
+        db2.findAllAndReturnList();
+
+        // part 5
+        try {
+            db2.findAllAndReturnListWithThreadPool();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        // part 4
         MethodsForEmbeddedDB db3 = new MethodsForEmbeddedDB();
         db3.createTable();
         db3.addDataToTable();
         db3.findAllAndReturnList();
+
+
     }
 }

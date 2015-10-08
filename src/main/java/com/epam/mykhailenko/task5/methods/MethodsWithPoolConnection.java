@@ -10,6 +10,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import static com.epam.mykhailenko.task5.data.Constants.SQL_QUERY;
 
@@ -93,5 +96,35 @@ public class MethodsWithPoolConnection {
             e.printStackTrace();
         }
         return (ArrayList<Station>) stationList;
+    }
+
+    public void findAllAndReturnListWithThreadPool() throws InterruptedException {
+
+        ExecutorService executorService = Executors.newFixedThreadPool(1);
+        for (int i = 0; i < 100000; i++) {
+            executorService.execute(new Runnable() {
+                public void run() {
+                    try {
+                        db = new DBConnectionPool();
+                        conn = db.createH2PoolConnection().getConnection();
+                        stmt = conn.createStatement();
+                        rs = stmt.executeQuery(SQL_QUERY);
+                        while (rs.next()) {
+                            station = findAllAndReturnEntity();
+                            stationList.add(station);
+                        }
+                        rs.close();
+                        stmt.close();
+                        conn.close(); // return connection back to the pool
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            long start = System.currentTimeMillis();
+            executorService.shutdown();
+            executorService.awaitTermination(5, TimeUnit.MINUTES);
+            System.out.println("Done after " + (System.currentTimeMillis() - start));
+        }
     }
 }
