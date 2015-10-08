@@ -17,13 +17,13 @@ import static com.epam.mykhailenko.task5.data.Constants.SQL_QUERY;
  */
 public class MethodsWithSimpleConnection {
 
-    Statement stmt;
-    ResultSet rs;
-    Connection conn;
+  private Statement stmt;
+  private ResultSet rs;
+  private Connection conn;
 
-    DBConnection dbConnection = new DBConnection();
-    List stationList = new ArrayList<Station>();
-    Station station;
+  private DBConnection dbConnection = new DBConnection();
+  private List stationList = new ArrayList<Station>();
+  private Station station;
 
     public Station findAllAndReturnEntity() {
         System.out.println("Creating statement...");

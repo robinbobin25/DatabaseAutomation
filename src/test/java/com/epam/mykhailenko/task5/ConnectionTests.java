@@ -1,5 +1,6 @@
 package com.epam.mykhailenko.task5;
 
+import com.epam.mykhailenko.task5.methods.MethodsForEmbeddedDB;
 import com.epam.mykhailenko.task5.methods.MethodsWithPoolConnection;
 import com.epam.mykhailenko.task5.methods.MethodsWithSimpleConnection;
 import org.junit.Test;
@@ -25,6 +26,15 @@ public class ConnectionTests {
     public void testsFindAllWithPoolConnectionIsNotEmpty(){
         MethodsWithPoolConnection db2 = new MethodsWithPoolConnection();
         testList = db2.findAllAndReturnList();
+        assertFalse(testList.isEmpty());
+    }
+
+    @Test
+    public void testsThatEmbeddedTableIsNotEmpty(){
+        MethodsForEmbeddedDB db3 = new MethodsForEmbeddedDB();
+        db3.createTable();
+        db3.addDataToTable();
+        testList = db3.findAllAndReturnList();
         assertFalse(testList.isEmpty());
     }
 }
